@@ -1,4 +1,5 @@
-require "BabyNames/version"
+require_relative "BabyNames/version"
+require_relative "BabyNames/cli"
 
 module BabyNames
   class Error < StandardError; end
