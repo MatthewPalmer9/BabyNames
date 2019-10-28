@@ -16,14 +16,15 @@ class BabyNames::CLI
     puts "Would you like the top girl names or top boy names? (Type 'girl' or 'boy' and press enter.)"
     input = gets.chomp
     errorMsg = "Sorry, you need to choose a gender. Please type 'girls' or 'boyss' and press enter."
-
-    if input = "girls" || "Girls"
-      call_table
-    elsif input = "boys" || "Boys"
-      call_table
-    else
-      puts errorMsg
-      call
+    while input != "girls" || input != "boys"
+      if input = "girls" || "Girls"
+        call_table
+      elsif input = "boys" || "Boys"
+        call_table
+      else
+        puts errorMsg
+        call
+      end
     end
   end
 
