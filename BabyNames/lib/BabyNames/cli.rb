@@ -17,9 +17,9 @@ class BabyNames::CLI
     input = gets.chomp
     errorMsg = "Sorry, you need to choose a gender. Please type 'girls' or 'boyss' and press enter."
     while input != "girls" || input != "boys"
-      if input = "girls" || "Girls"
+      if input == "girls" || input == "Girls"
         call_table
-      elsif input = "boys" || "Boys"
+      elsif input == "boys" || input == "Boys"
         call_table
       else
         puts errorMsg
