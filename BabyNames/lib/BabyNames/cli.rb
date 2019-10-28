@@ -13,9 +13,9 @@ class BabyNames::CLI
   end
 
   def call
-    puts "Would you like the top girl names or top boy names? (Type 'girl' or 'boy' and press enter.)"
+    puts "Would you like the top girl names or top boy names? (Type 'girls' or 'boys' and press enter.)"
     input = gets.chomp
-    errorMsg = "Sorry, you need to choose a gender. Please type 'girls' or 'boyss' and press enter."
+    errorMsg = "Sorry, you need to choose a gender. Please try again...\n"
     while input != "girls" || input != "boys"
       if input == "girls" || input == "Girls"
         call_table
@@ -32,9 +32,9 @@ class BabyNames::CLI
     html = open("https://www.ssa.gov/oact/babynames/")
     doc = Nokogiri::HTML(html)
 
-    @rank_head = doc.css(".c-table th:nth-child(1)").text
-    @boys_head = doc.css(".c-table th:nth-child(2)").text.upcase + "s"
-    @girls_head = doc.css(".c-table th:nth-child(3)").text + "s"
+    @rank_head = doc.css(".c-table th:nth-child(1)").text.upcase
+    @boys_head = doc.css(".c-table th:nth-child(2)").text.upcase + "S"
+    @girls_head = doc.css(".c-table th:nth-child(3)").text.upcase + "S"
   end
 
   def call_table
