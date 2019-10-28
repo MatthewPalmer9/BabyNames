@@ -1,6 +1,12 @@
+require 'open-uri'
+require 'nokogiri'
+
 class BabyNames::CLI
-  def call
-    puts "Hello"
-    puts "Your code works"
+  attr_accessor :male_names, :female_names, :rank
+
+  def initialize
+    @male_names = male_names
+    @female_names = female_names
+    @rank = rank 
   end
 end
