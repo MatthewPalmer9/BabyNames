@@ -1,5 +1,8 @@
 class BoyNames < BabyNames::CLI
-  attr_accessor
+
+  def initialize
+    @boy_array = []
+  end
 
   def boy_names
     html = open("https://www.ssa.gov/oact/babynames/")

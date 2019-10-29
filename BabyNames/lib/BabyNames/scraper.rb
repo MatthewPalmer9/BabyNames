@@ -1,5 +1,4 @@
 class Scraper < BabyNames::CLI
-  attr_accessor :rank_head, :boys_head, :girls_head
 
   def initialize
     html = open("https://www.ssa.gov/oact/babynames/")

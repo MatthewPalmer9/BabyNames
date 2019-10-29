@@ -2,7 +2,6 @@ require 'open-uri'
 require 'nokogiri'
 
 class GirlNames < BabyNames::CLI
-  attr_accessor :girl_array, :rank_head, :boys_head, :girls_head
 
   def initialize
     @girl_array = []
@@ -18,7 +17,6 @@ class GirlNames < BabyNames::CLI
   end
 
   def call_girl_table
-    # @rank_head = Scraper.new.rank
     count = 1
     puts "<<{}--[#{Scraper.new.rank}]-[#{Scraper.new.female_names}]--{}>>"
     @girl_array.each(){|name|

@@ -2,13 +2,6 @@ require 'open-uri'
 require 'nokogiri'
 
 class BabyNames::CLI
-  attr_accessor :input, :girl_array, :boy_array
-
-  def initialize
-    @input = input
-    #@girl_array = []
-    @boy_array = []
-  end
 
   def call
     puts "Would you like the top 10 girl names or top 10 boy names?"
