@@ -1,6 +1,5 @@
 require 'open-uri'
 require 'nokogiri'
-require 'pry'
 
 class BabyNames::CLI
   attr_accessor :input, :girl_array, :boy_array
@@ -12,7 +11,7 @@ class BabyNames::CLI
   end
 
   def call
-    puts "Would you like the top 10 girl names or top boy names?"
+    puts "Would you like the top 10 girl names or top 10 boy names?"
     puts "(Type 'girls' or 'boys' and press enter.)"
     input = gets.chomp
     errorMsg = "Sorry, you need to choose a gender. Please try again..."
@@ -93,12 +92,20 @@ class BabyNames::CLI
   puts "//////////////////////////////////"
   answer = gets.chomp
 
-    if answer == "yes" || answer == "Yes"
-      puts " "
-      girl_names
-      call_girl_table
-    elsif answer == "no" || answer == "No"
+    if answer == "no" || answer == "No" || answer == "exit"
       puts "Goodbye! :)"
+    elsif answer == "yes" || answer == "Yes"
+      puts " "
+      boy_names
+      call_girl_table
+    elsif answer != "yes" || answer != "Yes" || answer != "no" || answer != "No"
+      puts " "
+      puts "Sorry, that is an invalid response."
+      puts "Please type 'yes' or 'no'."
+      puts " "
+      puts "--!! HELP !!--"
+      puts "If you're trying to exit, please type 'exit'."
+      girls_this_time?
     end
   end
 
@@ -110,12 +117,20 @@ class BabyNames::CLI
   puts "/////////////////////////////////"
   answer = gets.chomp
 
-    if answer == "yes" || answer == "Yes"
+    if answer == "no" || answer == "No" || answer == "exit"
+      puts "Goodbye! :)"
+    elsif answer == "yes" || answer == "Yes"
       puts " "
       boy_names
       call_boy_table
-    elsif answer == "no" || answer == "No"
-      puts "Goodbye! :)"
+    elsif answer != "yes" || answer != "Yes" || answer != "no" || answer != "No"
+      puts " "
+      puts "Sorry, that is an invalid response."
+      puts "Please type 'yes' or 'no'."
+      puts " "
+      puts "--!! HELP !!--"
+      puts "If you're trying to exit, please type 'exit'."
+      boys_this_time?
     end
   end
 end
