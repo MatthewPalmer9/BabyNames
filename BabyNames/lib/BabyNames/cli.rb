@@ -12,7 +12,8 @@ class BabyNames::CLI
   end
 
   def call
-    puts "Would you like the top 10 girl names or top boy names? (Type 'girls' or 'boys' and press enter.)"
+    puts "Would you like the top 10 girl names or top boy names?"
+    puts "(Type 'girls' or 'boys' and press enter.)"
     input = gets.chomp
     errorMsg = "Sorry, you need to choose a gender. Please try again..."
 
@@ -33,11 +34,6 @@ class BabyNames::CLI
     doc.css("td:nth-child(3)").each(){|name|
       @rank_array << name.text
     }
-  end
-
-  def noko_call
-    html = open("https://www.ssa.gov/oact/babynames/")
-    doc = Nokogiri::HTML(html)
   end
 
   def girl_names
