@@ -29,13 +29,6 @@ class BabyNames::CLI
     end
   end
 
-  def rank_nums
-    @rank_array = []
-    doc.css("td:nth-child(3)").each(){|name|
-      @rank_array << name.text
-    }
-  end
-
   def girl_names
     html = open("https://www.ssa.gov/oact/babynames/")
     doc = Nokogiri::HTML(html)
