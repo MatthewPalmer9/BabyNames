@@ -59,7 +59,7 @@ class BabyNames::CLI
     if answer == "no" || answer == "exit"
       puts "Goodbye! :)"
     elsif answer == "yes"
-      puts " " 
+      puts " "
       Scraper.new.girl_names
       call_girl_table
     elsif answer != "yes" || answer != "no"
@@ -83,7 +83,7 @@ class BabyNames::CLI
 
     if answer == "no" || answer == "exit"
       puts "Goodbye! :)"
-    elsif answer == "yes" || answer == "Yes"
+    elsif answer == "yes"
       puts " "
       Scraper.new.boy_names
       call_boy_table
