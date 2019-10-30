@@ -1,22 +1,101 @@
 class BabyNames::CLI
+  attr_accessor :scraper
 
   def call
     puts "Would you like the top 10 girl names or top 10 boy names?"
     puts "(Type 'girls' or 'boys' and press enter.)"
-    input = gets.chomp
+    input = gets.chomp.downcase
     errorMsg = "Sorry, you need to choose a gender. Please try again..."
 
-    if input == "girls" || input == "Girls"
-      girls = GirlNames.new
-      girls.girl_names
-      girls.call_girl_table
-    elsif input == "boys" || input == "Boys"
-      boys = BoyNames.new
-      boys.boy_names
-      boys.call_boy_table
+    @scraper = Scraper.new
+    @scraper.get_headers
+
+    if input == "girls"
+      @scraper.girl_names
+      call_girl_table
+    elsif input == "boys"
+      @scraper.boy_names
+      call_boy_table
     else
       puts errorMsg
       call
     end
   end
+
+  def call_girl_table
+    count = 1
+    puts "<<{}--[#{@scraper.rank_head}]-[#{@scraper.girls_head}]--{}>>"
+    GirlNames.all.each(){|girl|
+      puts "   >>  [#{count}]:" + "     #{girl.name}" unless count == 10
+      count += 1
+    }
+    puts "   >>  [#{count-1}]:" + "    #{GirlNames.all.last.name}"
+    puts "<<{}---------END-----------{}>>"
+
+    boys_this_time?
+  end
+
+  def call_boy_table
+    count = 1
+    puts "<<{}--[#{@scraper.rank_head}]-[#{@scraper.boys_head}]--{}>>"
+    BoyNames.all.each(){|boy|
+      puts "   >>  [#{count}]:" + "     #{boy.name}" unless count == 10
+      count += 1
+    }
+    puts "   >>  [#{count-1}]:" + "    #{BoyNames.all.last.name}"
+    puts "<<{}---------END-----------{}>>"
+
+    girls_this_time?
+  end
+
+  def girls_this_time?
+    puts " "
+    puts "//////////////////////////////////"
+    puts "Would you like to know girl names?"
+    puts "(type 'yes' or 'no')"
+    puts "//////////////////////////////////"
+    answer = gets.chomp.downcase
+
+    if answer == "no" || answer == "exit"
+      puts "Goodbye! :)"
+    elsif answer == "yes"
+      puts " " 
+      Scraper.new.girl_names
+      call_girl_table
+    elsif answer != "yes" || answer != "no"
+      puts " "
+      puts "Sorry, that is an invalid response."
+      puts "Please type 'yes' or 'no'."
+      puts " "
+      puts "--!! HELP !!--"
+      puts "If you're trying to exit, please type 'exit'."
+      girls_this_time?
+    end
+  end
+
+  def boys_this_time?
+    puts " "
+    puts "/////////////////////////////////"
+    puts "Would you like to know boy names?"
+    puts "(type 'yes' or 'no')"
+    puts "/////////////////////////////////"
+    answer = gets.chomp.downcase
+
+    if answer == "no" || answer == "exit"
+      puts "Goodbye! :)"
+    elsif answer == "yes" || answer == "Yes"
+      puts " "
+      Scraper.new.boy_names
+      call_boy_table
+    elsif answer != "yes" || answer != "no"
+      puts " "
+      puts "Sorry, that is an invalid response."
+      puts "Please type 'yes' or 'no'."
+      puts " "
+      puts "--!! HELP !!--"
+      puts "If you're trying to exit, please type 'exit'."
+      boys_this_time?
+    end
+  end
+
 end
