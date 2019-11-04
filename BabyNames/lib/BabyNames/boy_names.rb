@@ -1,4 +1,4 @@
-class BoyNames < BabyNames::CLI 
+class BoyNames < BabyNames::CLI
   attr_accessor :name
 
   @@all = []

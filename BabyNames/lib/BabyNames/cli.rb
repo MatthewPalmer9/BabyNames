@@ -1,7 +1,12 @@
+require 'nokogiri'
+require 'open-uri'
+
 class BabyNames::CLI
   attr_accessor :scraper
 
   def call
+    Scraper.new.boy_names
+    Scraper.new.girl_names
     puts "Would you like the top 10 girl names or top 10 boy names?"
     puts "(Type 'girls' or 'boys' and press enter.)"
     input = gets.chomp.downcase
@@ -11,10 +16,8 @@ class BabyNames::CLI
     @scraper.get_headers
 
     if input == "girls"
-      @scraper.girl_names
       call_girl_table
     elsif input == "boys"
-      @scraper.boy_names
       call_boy_table
     else
       puts errorMsg
@@ -60,7 +63,6 @@ class BabyNames::CLI
       puts "Goodbye! :)"
     elsif answer == "yes"
       puts " "
-      Scraper.new.girl_names
       call_girl_table
     elsif answer != "yes" || answer != "no"
       puts " "
@@ -85,7 +87,6 @@ class BabyNames::CLI
       puts "Goodbye! :)"
     elsif answer == "yes"
       puts " "
-      Scraper.new.boy_names
       call_boy_table
     elsif answer != "yes" || answer != "no"
       puts " "

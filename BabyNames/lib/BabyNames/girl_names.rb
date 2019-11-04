@@ -2,9 +2,9 @@ class GirlNames < BabyNames::CLI
 
   attr_accessor :name
 
-  @@all = []
+  @@all = [].uniq
 
-  def initialize(name) 
+  def initialize(name)
     @name = name
     @@all << self
   end
