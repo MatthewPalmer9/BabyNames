@@ -1,6 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-
 class BabyNames::CLI
   attr_accessor :scraper
 

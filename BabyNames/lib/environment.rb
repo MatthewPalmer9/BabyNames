@@ -1,3 +1,5 @@
+require 'nokogiri'
+require 'open-uri'
 require_relative "BabyNames/version"
 require_relative "BabyNames/cli"
 require_relative "BabyNames/boy_names"
