@@ -74,10 +74,10 @@ class BabyNames::CLI
 
   def boys_this_time?
     puts " "
-    puts "/////////////////////////////////"
+    puts "//////////////////////////////////"
     puts "Would you like to know boy names?"
     puts "(type 'yes' or 'no')"
-    puts "/////////////////////////////////"
+    puts "//////////////////////////////////"
     answer = gets.chomp.downcase
 
     if answer == "no" || answer == "exit"
