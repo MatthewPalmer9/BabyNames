@@ -31,7 +31,8 @@ class BabyNames::CLI
     }
     puts "   >>  [#{count-1}]:" + "    #{GirlNames.all.last.name}"
     puts "<<{}---------END-----------{}>>"
-
+    puts " "
+    puts "** If you would like a random girl name, type 'random' **"
     boys_this_time?
   end
 
@@ -44,6 +45,8 @@ class BabyNames::CLI
     }
     puts "   >>  [#{count-1}]:" + "    #{BoyNames.all.last.name}"
     puts "<<{}---------END-----------{}>>"
+    puts " "
+    puts "** If you would like a random boy name, type 'random' **"
 
     girls_this_time?
   end
@@ -61,6 +64,8 @@ class BabyNames::CLI
     elsif answer == "yes"
       puts " "
       call_girl_table
+    elsif answer == "random"
+      randomize_boy
     elsif answer != "yes" || answer != "no"
       puts " "
       puts "Sorry, that is an invalid response."
@@ -85,6 +90,8 @@ class BabyNames::CLI
     elsif answer == "yes"
       puts " "
       call_boy_table
+    elsif answer == 'random'
+      randomize_girl
     elsif answer != "yes" || answer != "no"
       puts " "
       puts "Sorry, that is an invalid response."
@@ -94,6 +101,20 @@ class BabyNames::CLI
       puts "If you're trying to exit, please type 'exit'."
       boys_this_time?
     end
+  end
+
+  def randomize_girl
+    puts " "
+    puts GirlNames.all.sample.name
+    puts " "
+    boys_this_time?
+  end
+
+  def randomize_boy
+    puts " "
+    puts BoyNames.all.sample.name
+    puts " "
+    girls_this_time?
   end
 
 end
