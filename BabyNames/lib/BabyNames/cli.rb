@@ -26,7 +26,7 @@ class BabyNames::CLI
     count = 1
     puts "<<{}--[#{@scraper.rank_head}]-[#{@scraper.girls_head}]--{}>>"
     GirlNames.all.each(){|girl|
-      puts "   >>  [#{count}]:" + "     #{girl.name}" unless count == 10
+      puts "   >>  [#{count}]:" + "     #{girl.name}" unless count == 10 
       count += 1
     }
     puts "   >>  [#{count-1}]:" + "    #{GirlNames.all.last.name}"
